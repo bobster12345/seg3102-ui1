@@ -1,5 +1,5 @@
-import request from "reqwest";
-import when from "when";
+//import request from "reqwest";
+//import when from "when";
 
 class AuthService {
   /*login(username, password) {
@@ -36,7 +36,7 @@ class AuthService {
     //LoginActions.logoutUser();
   }
 
-  signup(username, password, extra) {
+  /*signup(username, password, extra) {
     return this.handleAuth(
       when(
         request({
@@ -54,7 +54,7 @@ class AuthService {
     );
   }
 
-  /*handleAuth(loginPromise) {
+  handleAuth(loginPromise) {
     return fetch(loginPromise).then(function(response) {
       console.log(response);
     });

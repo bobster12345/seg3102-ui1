@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://api.exampple.com",
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "@material-ui/core": "^3.6.1",
     "@material-ui/icons": "^3.0.1",
