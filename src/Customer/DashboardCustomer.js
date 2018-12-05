@@ -10,13 +10,12 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
-import SimpleLineChart from './SimpleLineChart';
+import { mainListItems, secondaryListItems } from './listitems';
 import SimpleTable from './SimpleTable';
+
+import DashBoardwelcome from './DashBoardwelcome';
 
 const drawerWidth = 240;
 
@@ -86,7 +85,7 @@ const styles = theme => ({
     height: '100vh',
     overflow: 'auto',
   },
-  chartContainer: {
+  paperContainer: {
     marginLeft: -22,
   },
   tableContainer: {
@@ -141,11 +140,7 @@ class Dashboard extends React.Component {
             >
               Dashboard
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+
           </Toolbar>
         </AppBar>
         <Drawer
@@ -168,10 +163,10 @@ class Dashboard extends React.Component {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Typography variant="h4" gutterBottom component="h2">
-            Orders
+            WFHX System Dashboard
           </Typography>
-          <Typography component="div" className={classes.chartContainer}>
-            <SimpleLineChart />
+          <Typography component="div" className={classes.paperContainer}>
+            <DashBoardwelcome />
           </Typography>
           <Typography variant="h4" gutterBottom component="h2">
             Products

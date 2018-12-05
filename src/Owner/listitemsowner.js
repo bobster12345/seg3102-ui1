@@ -42,6 +42,20 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Rental" />
     </ListItem>
+
+    <ListItem button>
+      <ListItemIcon>
+        <LayersIcon />
+      </ListItemIcon>
+      <ListItemText primary="Property" />
+    </ListItem>
+
+    <ListItem button>
+      <ListItemIcon>
+        <LayersIcon />
+      </ListItemIcon>
+      <ListItemText primary="Search" />
+    </ListItem>
   </div>
 );
 
@@ -64,7 +78,13 @@ export const secondaryListItems = (
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
+      <ListItemText primary="Delete Account" />
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="Create Property" />
     </ListItem>
   </div>
 );
