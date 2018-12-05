@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import SignIn from "./SignIn";
-//import Dashboard from "./DashboardAgent";
+import SignInPage from "./SignInPage";
 
 class App extends Component {
   render() {
-    return <SignIn />;
+    return <SignInPage />;
   }
 }
 

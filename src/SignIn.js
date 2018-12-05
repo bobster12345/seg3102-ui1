@@ -47,6 +47,17 @@ const styles = theme => ({
 });
 
 class SignIn extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      password: ""
+    };
+  }
+  submitForm = e => {
+    e.preventDefault(); //this stops the page from redireting when you hit submit
+    alert(`Email: ${this.state.username} - PW: ${this.state.password}`);
+  };
   render() {
     const { classes } = this.props;
 
@@ -60,7 +71,12 @@ class SignIn extends React.Component {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form}>
+          <form
+            className={classes.form}
+            onSubmit={e => {
+              this.submitForm(e);
+            }}
+          >
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="username">Username</InputLabel>
               <Input
@@ -68,6 +84,7 @@ class SignIn extends React.Component {
                 name="username"
                 autoComplete="username"
                 autoFocus
+                onChange={e => this.setState({ username: e.target.value })}
               />
             </FormControl>
             <FormControl margin="normal" required fullWidth>
@@ -77,6 +94,7 @@ class SignIn extends React.Component {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={e => this.setState({ password: e.target.value })}
               />
             </FormControl>
             <FormControlLabel
