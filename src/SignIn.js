@@ -52,15 +52,25 @@ class SignIn extends React.Component {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      account_id: "",
+      account_type: "",
+      session_token: ""
     };
   }
   submitForm = e => {
     e.preventDefault(); //this stops the page from redireting when you hit submit
-    Auth.login(this.state.username, this.state.password).catch(function(err) {
-      //alert("There's an error logging in");
-      //console.log("Error logging in", err);
+    var account_info = Auth.login(
+      this.state.username,
+      this.state.password
+    ).catch(function(err) {
+      alert("ERROR IN LOGIN");
+      console.log("ERROR IN LOGIN", err);
     });
+    this.setState(state => {
+      return { account_id: account_info.account_id };
+    });
+    console.log("accountid:", this.state.account_id);
   };
   render() {
     const { classes } = this.props;

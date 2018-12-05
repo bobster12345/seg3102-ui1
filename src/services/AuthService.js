@@ -2,34 +2,26 @@
 //import when from "when";
 
 class AuthService {
-  /*login(username, password) {
-    return this.handleAuth(
-      when(
-        request({
-          url: "http://localhost:3001/login",
-          method: "PUT",
-          crossOrigin: true,
-          type: "json",
-          data: {
-            username,
-            password
-          }
-        })
-      )
-    );
-  }*/
   login(username, password) {
-    return fetch("http://localhost:3001/login", {
+    return fetch("/login", {
       method: "PUT",
-      crossOrigin: true,
-      type: "json",
-      data: {
+      headers: {
+        //Accept: 'application/json',
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
         username,
         password
-      }
+      })
     })
       .then(response => response.json())
-      .then(parsedJSON => console.log(parsedJSON.result));
+      .then(responseJson => {
+        return {
+          account_id: responseJson.account_id,
+          account_type: responseJson.account_type,
+          session_token: responseJson.session_token
+        };
+      });
   }
 
   logout() {
@@ -52,12 +44,6 @@ class AuthService {
         })
       )
     );
-  }
-
-  handleAuth(loginPromise) {
-    return fetch(loginPromise).then(function(response) {
-      console.log(response);
-    });
   }*/
 }
 
