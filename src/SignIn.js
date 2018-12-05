@@ -12,7 +12,7 @@ import LockIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-import Auth from "./services/AuthService";
+//import Auth from "./services/AuthService";
 
 const styles = theme => ({
   main: {
@@ -58,19 +58,42 @@ class SignIn extends React.Component {
       session_token: ""
     };
   }
+
+  login(username, password) {
+    return fetch("/login", {
+      method: "PUT",
+      headers: {
+        //Accept: 'application/json',
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username,
+        password
+      })
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw `${response.status}, ${response.statusText}`;
+        }
+      })
+      .then(responseJson => {
+        this.setState({
+          account_id: responseJson.account_id,
+          account_type: responseJson.account_type,
+          session_token: responseJson.session_token
+        });
+      })
+      .catch(function(err) {
+        alert("ERROR IN LOGIN");
+        console.log("ERROR IN REQUEST", err);
+      });
+  }
+
   submitForm = e => {
     e.preventDefault(); //this stops the page from redireting when you hit submit
-    var account_info = Auth.login(
-      this.state.username,
-      this.state.password
-    ).catch(function(err) {
-      alert("ERROR IN LOGIN");
-      console.log("ERROR IN LOGIN", err);
-    });
-    this.setState(state => {
-      return { account_id: account_info.account_id };
-    });
-    console.log("accountid:", this.state.account_id);
+    this.login(this.state.username, this.state.password);
   };
   render() {
     const { classes } = this.props;

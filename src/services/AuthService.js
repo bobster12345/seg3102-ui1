@@ -16,6 +16,7 @@ class AuthService {
     })
       .then(response => response.json())
       .then(responseJson => {
+        console.log(responseJson.account_id);
         return {
           account_id: responseJson.account_id,
           account_type: responseJson.account_type,
