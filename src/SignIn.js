@@ -12,6 +12,7 @@ import LockIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
+import Auth from "./services/AuthService";
 
 const styles = theme => ({
   main: {
@@ -56,7 +57,10 @@ class SignIn extends React.Component {
   }
   submitForm = e => {
     e.preventDefault(); //this stops the page from redireting when you hit submit
-    alert(`Email: ${this.state.username} - PW: ${this.state.password}`);
+    Auth.login(this.state.username, this.state.password).catch(function(err) {
+      //alert("There's an error logging in");
+      //console.log("Error logging in", err);
+    });
   };
   render() {
     const { classes } = this.props;
