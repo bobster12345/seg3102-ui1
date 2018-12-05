@@ -90,7 +90,6 @@ class SignIn extends React.Component {
         localStorage.setItem("session_token", responseJson.session_token);
         //console.log(localStorage.getItem("account_id"));
         if (this.state.account_type == "AGENT") {
-          <Dashboard />;
         }
       })
       .catch(function(err) {
