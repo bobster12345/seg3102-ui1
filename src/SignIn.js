@@ -12,6 +12,7 @@ import LockIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
+import { Dashboard as DashboardAgent } from "./Agent/DashboardAgent";
 //import Auth from "./services/AuthService";
 
 const styles = theme => ({
@@ -53,9 +54,9 @@ class SignIn extends React.Component {
     this.state = {
       username: "",
       password: "",
-      account_id: "",
-      account_type: "",
-      session_token: ""
+      account_id: localStorage.getItem("account_id"),
+      account_type: localStorage.getItem("account_type"),
+      session_token: localStorage.getItem("session_token")
     };
   }
 
@@ -84,6 +85,13 @@ class SignIn extends React.Component {
           account_type: responseJson.account_type,
           session_token: responseJson.session_token
         });
+        localStorage.setItem("account_id", responseJson.account_id);
+        localStorage.setItem("account_type", responseJson.account_type);
+        localStorage.setItem("session_token", responseJson.session_token);
+        //console.log(localStorage.getItem("account_id"));
+        if (this.state.account_type == "AGENT") {
+          <Dashboard />;
+        }
       })
       .catch(function(err) {
         alert("ERROR IN LOGIN");
